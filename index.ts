@@ -5,6 +5,7 @@ import express from 'express';
 import morgan from 'morgan';
 import fileUpload from 'express-fileupload'
 import postRoutes from "./routes/postroutes";
+import cors from 'cors'
 const server = new Server();
 
 // Lectura y parseo del body
@@ -12,6 +13,8 @@ const server = new Server();
 server.app.use(express.json());
 //FileUpload
 server.app.use(fileUpload({useTempFiles: true}));
+//Configurar Cors
+server.app.use(cors({origin: true, credentials: true}))
 //Utilizar morgan
 server.app.use(morgan('dev'));
 //Rutas de mi aplicacion
